@@ -284,25 +284,26 @@ export default {
           imagen_url: "https://dist.megahogar.es/fotos/24B1H_1.jpg",
         },
       ],
-      randomNumber: function () {
+      randomNumber: function () { // Proporciona un numero aletatorio y lo asigna a la valoración del producto.
         return Math.floor(Math.random() * (5 - 1 + 1)) + 1;
     },
-    randomBadge: function () {
+    randomBadge: function () { // Proporciona una categoria para el producto y lo asigna.
         let badges = ["Nuevo", "Oferta", "Destacado",];
         return badges[Math.floor(Math.random() * badges.length)]
     },
+    // Propiedades para el paginador
     page: 1,
     pageSize: 6,
     listCount: 0,    
     historyList: []
     };
   },
-  created() {
+  created() { // Inicializa el paginador.
 		let _this = this;
 		_this.initPage();
 		_this.updatePage(_this.page);
 	},
-  methods: {
+  methods: { // Metodos para la inicialización y cambio de página
 		initPage: function() {
 			let _this = this;
 			_this.listCount = _this.articulos.length;
@@ -320,7 +321,7 @@ export default {
 			_this.page = pageIndex;
 		}
 	},
-  computed: {
+  computed: { // Cálculo de paginas en total
 		pages() {
 			let _this = this;
 			if (_this.pageSize == null || _this.listCount == null) return 0;
